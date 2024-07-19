@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class TabPanel : BasePanel
 {
+    private void Awake()
+    {
+        UIManager.Instance.ResgisterPanel(UIPanelType.Tab, this);
+    }
+
     public override void Hide()
     {
         base.Hide();

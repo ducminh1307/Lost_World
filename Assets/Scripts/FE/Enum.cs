@@ -1,6 +1,6 @@
-public enum UIPanel
+public enum UIPanelType
 {
-
+    Tab
 }
 
 public enum UITab

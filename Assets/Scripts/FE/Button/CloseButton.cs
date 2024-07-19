@@ -7,8 +7,7 @@ public class CloseButton : BaseButton
     protected override void OnButtonClick()
     {
         base.OnButtonClick();
-        BasePanel parentPanel = GetComponentInParent<BasePanel>();
 
-        parentPanel.Hide();
+        UIManager.Instance.GetPanel(UIPanelType.Tab).Hide();
     }
 }

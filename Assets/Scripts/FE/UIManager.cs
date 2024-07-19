@@ -5,6 +5,8 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+    
+    private Dictionary<UIPanelType, BasePanel> panels = new Dictionary<UIPanelType, BasePanel>();
 
     private void Awake()
     {
@@ -12,5 +14,19 @@ public class UIManager : MonoBehaviour
             Instance = this;
         else
             Destroy(Instance);
+    }
+
+    public void ResgisterPanel(UIPanelType panelType, BasePanel panel)
+    {
+        if (!panels.ContainsKey(panelType))
+        {
+            panels.Add(panelType, panel);
+        }
+    }
+
+    public BasePanel GetPanel(UIPanelType panelType)
+    {
+        panels.TryGetValue(panelType, out BasePanel panel);
+        return panel;
     }
 }
