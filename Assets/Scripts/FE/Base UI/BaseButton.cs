@@ -11,18 +11,8 @@ public class BaseButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
-        if (button != null)
-        {
-            button.onClick.AddListener(OnButtonClick);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (button != null)
-        {
-            button.onClick.RemoveListener(OnButtonClick);
-        }
+        
+        button.onClick.AddListener(OnButtonClick);
     }
 
     protected virtual void OnButtonClick()
