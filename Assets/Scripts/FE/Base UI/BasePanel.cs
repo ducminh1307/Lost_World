@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BasePanel : MonoBehaviour
 {
+    public void Deactive()
+    {
+        gameObject.SetActive(false);
+    }
+
     public virtual void Show()
     {
         gameObject.SetActive(true);
@@ -11,6 +16,6 @@ public class BasePanel : MonoBehaviour
 
     public virtual void Hide()
     {
-        gameObject.SetActive(false);
+
     }
 }

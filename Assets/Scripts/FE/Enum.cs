@@ -1,5 +1,6 @@
 public enum UIPanelType
 {
+    TabButton,
     Tab
 }
 

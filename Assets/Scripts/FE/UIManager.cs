@@ -16,6 +16,14 @@ public class UIManager : MonoBehaviour
             Destroy(Instance);
     }
 
+    private void Start()
+    {
+        foreach (var panel in panels.Values)
+        {
+            panel.Deactive();
+        }
+    }
+
     public void ResgisterPanel(UIPanelType panelType, BasePanel panel)
     {
         if (!panels.ContainsKey(panelType))
