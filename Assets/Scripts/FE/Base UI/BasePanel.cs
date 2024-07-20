@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class BasePanel : MonoBehaviour
 {
+    protected CanvasGroup canvasGroup;
+
+    protected virtual void Awake()
+    {
+        canvasGroup = GetComponent<CanvasGroup>();
+        if (canvasGroup == null)
+            gameObject.AddComponent<CanvasGroup>();
+    }
+
     public void Deactive()
     {
         gameObject.SetActive(false);

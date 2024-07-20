@@ -6,11 +6,13 @@ using UnityEngine;
 public class TabButtonPanel : BasePanel
 {
     [SerializeField] private RectTransform tabButtonContainer;
-    [SerializeField] private float duration = 1f;
+    [SerializeField] private float duration = .1f;
     [SerializeField] private Ease effect;
     private float widthContainer;
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         UIManager.Instance.ResgisterPanel(UIPanelType.TabButton, this);
         widthContainer = tabButtonContainer.rect.width;
     }

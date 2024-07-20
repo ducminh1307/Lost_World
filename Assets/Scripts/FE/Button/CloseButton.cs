@@ -9,5 +9,6 @@ public class CloseButton : BaseButton
         base.OnButtonClick();
 
         UIManager.Instance.GetPanel(UIPanelType.Tab).Hide();
+        UIManager.Instance.GetPanel(UIPanelType.TabButton).Hide();
     }
 }

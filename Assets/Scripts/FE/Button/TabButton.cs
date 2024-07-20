@@ -7,7 +7,16 @@ public class TabButton : BaseButton
     protected override void OnButtonClick()
     {
         base.OnButtonClick();
+    }
 
-        UIManager.Instance.GetPanel(UIPanelType.TabButton).Show();
+    protected void ShowTab(UITab tabType)
+    {
+        BasePanel panel = UIManager.Instance.GetPanel(UIPanelType.Tab);
+        panel.Show();
+
+        if (panel is TabPanel tabPanel)
+        {
+            tabPanel.ShowTab(tabType);
+        }
     }
 }
