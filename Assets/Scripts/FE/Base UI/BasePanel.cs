@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CanvasGroup))]
 public class BasePanel : MonoBehaviour
 {
     protected CanvasGroup canvasGroup;
@@ -9,8 +10,6 @@ public class BasePanel : MonoBehaviour
     protected virtual void Awake()
     {
         canvasGroup = GetComponent<CanvasGroup>();
-        if (canvasGroup == null)
-            gameObject.AddComponent<CanvasGroup>();
     }
 
     public void Deactive()

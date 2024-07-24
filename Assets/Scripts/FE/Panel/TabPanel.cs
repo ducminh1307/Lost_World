@@ -13,7 +13,7 @@ public class TabPanel : BasePanel
 
     [Header("Properties")]
     [SerializeField] private float duration = .1f;
-    [SerializeField] private Ease fadeTtransition;
+    [SerializeField] private Ease scaleTtransition;
 
     protected override void Awake()
     {
@@ -23,15 +23,15 @@ public class TabPanel : BasePanel
         canvasGroup = GetComponent<CanvasGroup>();
         pageSwiper = GetComponentInChildren<PageSwiper>();
 
-        containerTab.localScale = new Vector3(.1f, .1f, .1f);
+        containerTab.localScale = Vector3.zero;
     }
 
     public override void Hide()
     {
         base.Hide();
         canvasGroup.DOFade(0, duration);
-        containerTab.DOScale(new Vector3(.1f, .1f, .1f), duration)
-            .SetEase(fadeTtransition)
+        containerTab.DOScale(Vector3.zero, duration)
+            .SetEase(scaleTtransition)
             .OnComplete(() =>
             {
                 Deactive();
@@ -43,7 +43,7 @@ public class TabPanel : BasePanel
         base.Show();
         canvasGroup.DOFade(1, duration);
         containerTab.DOScale(Vector3.one, duration)
-            .SetEase(fadeTtransition);
+            .SetEase(scaleTtransition);
     }
 
     public void ShowTab(UITab tabType)
