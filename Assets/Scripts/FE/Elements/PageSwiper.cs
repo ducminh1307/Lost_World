@@ -6,12 +6,22 @@ using UnityEngine.UI;
 public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     [SerializeField] private RectTransform contentTab;
+    [SerializeField] private Transform dotContainer;
     [SerializeField] private float widthChildren;
-    float difference;
+    private float difference;
+    private float index;
+    private Image[] dots;
 
-    private void Start()
+    private void Awake()
     {
+        dots = dotContainer.GetComponentsInChildren<Image>();
     }
+
+    public void SetIndex(int index) 
+    {
+        this.index = index;
+        ChangeActiveDot();
+    } 
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -27,8 +37,9 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         if (difference > 0)
         {
             //Neu den item cuoi cung thi dung
-            if (widthChildren >= (contentTab.rect.width - Mathf.Abs(currentPosX)))
+            if ((contentTab.rect.width - Mathf.Abs(currentPosX)) <= widthChildren)
                 return;
+            index++;
             newPosition = currentPosX - widthChildren;
         }
         
@@ -36,11 +47,24 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         if (difference < 0)
         {
             //Neu den item dau tien thi dung
-            if (contentTab.anchoredPosition.x == 0)
+            if (contentTab.anchoredPosition.x >= 0)
                 return;
+            index--;
             newPosition = currentPosX + widthChildren;
         }
 
+        ChangeActiveDot();
+
         contentTab.DOAnchorPosX(newPosition, .15f);
+    }
+
+    private void ChangeActiveDot()
+    {
+        for (int i = 0; i < dots.Length; i++)
+        {
+            dots[i].color = Color.gray;
+            if (i == index)
+                dots[i].color = Color.white;
+        }
     }
 }

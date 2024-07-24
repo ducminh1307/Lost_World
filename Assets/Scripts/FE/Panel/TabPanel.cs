@@ -9,7 +9,7 @@ public class TabPanel : BasePanel
     [Header("Elements")]
     [SerializeField] private RectTransform containerTab;
     [SerializeField] private RectTransform tabContainer;
-    PageSwiper swiper;
+    private PageSwiper pageSwiper;
 
     [Header("Properties")]
     [SerializeField] private float duration = .1f;
@@ -21,7 +21,7 @@ public class TabPanel : BasePanel
 
         UIManager.Instance.ResgisterPanel(UIPanelType.Tab, this);
         canvasGroup = GetComponent<CanvasGroup>();
-        swiper = GetComponentInChildren<PageSwiper>();
+        pageSwiper = GetComponentInChildren<PageSwiper>();
 
         containerTab.localScale = new Vector3(.1f, .1f, .1f);
     }
@@ -48,6 +48,7 @@ public class TabPanel : BasePanel
 
     public void ShowTab(UITab tabType)
     {
+        pageSwiper.SetIndex((int)tabType);
         switch (tabType)
         {
             case UITab.Setting:
