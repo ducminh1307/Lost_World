@@ -74,4 +74,4 @@ crashlytics-build.properties
 Assets/PlayerPrefsEditor/CHANGELOG.md
 Assets/PlayerPrefsEditor/
 Assets/PlayerPrefsEditor.meta
-ProjectSettings
+.utmp/
